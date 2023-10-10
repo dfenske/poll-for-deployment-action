@@ -1,0 +1,23 @@
+name: Poll for successful deployment
+description: |
+  Poll for successful deployments and return the deployment URL when found.
+branding:
+  icon: clock
+  color: white
+
+inputs:
+  environment:
+    description: The deployment environment to wait for
+  github-token:
+    description: Your GitHub access token
+    required: true
+  intervalSeconds:
+    description: The number of seconds to wait between repeated checks for deployments.
+    default: "10"
+  timeoutSeconds:
+    description: The number of seconds after which to fail if no deployment is found.
+    default: "240"
+
+runs:
+  using: node12
+  main: index.js
