@@ -36,7 +36,9 @@ async function waitForDeployment(options) {
   core.info(`Deployment params: ${JSON.stringify(params, null, 2)}`);
 
   while (true) {
-    const { data: deployments } = await octokit.repos.listDeployments(params);
+    const { data: deployments } = await octokit.rest.actions.listDeployments(
+      params
+    );
 
     for (const deployment of deployments) {
       core.info(
