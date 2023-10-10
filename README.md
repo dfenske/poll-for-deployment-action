@@ -17,7 +17,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: dfenske/wait-for-deployment-action@v3
+      - uses: dfenske/poll-for-deployment-action@v1
         id: deployment
         with:
           github-token: ${{ github.token }}
