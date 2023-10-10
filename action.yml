@@ -1,6 +1,6 @@
-name: Poll for successful deployment
+name: Poll for deployment
 description: |
-  Poll for successful deployments and return the deployment URL when found.
+  Poll for deployments and return the deployment URL when found.
 branding:
   icon: clock
   color: white
