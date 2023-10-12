@@ -58,6 +58,7 @@ async function waitForDeployment(options) {
       );
 
       const [success] = statuses.filter((status) => status.state === "success");
+      const [inactive] = statuses.filter((status) => status.state === "inactive");
 
       if (success) {
         core.info(`\tFound a successful deployment!`);
@@ -70,6 +71,13 @@ async function waitForDeployment(options) {
         return {
           deployment,
           url: deploymentUrl,
+        };
+      } else if (inactive) {
+        // This deployment was cancelled
+        core.info(`\tFound an inactive deployment`);
+        core.info(`\t${JSON.stringify(inactive, null, 2)}`);
+        return {
+          deployment
         };
       } else {
         core.info(
