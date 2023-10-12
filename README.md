@@ -44,11 +44,11 @@ This is the deployment environment to target. The Vercel integration deploys
 every push to the `Preview` environment, and pushes the default branch to
 `Production`.
 
-### `timeout`
+### `timeoutSeconds`
 
 The number of seconds after which to give up with an error. Default: 30.
 
-### `interval`
+### `intervalSeconds`
 
 The number of seconds to wait between polls to the deployments API. Default: 5.
 
@@ -82,8 +82,8 @@ jobs:
         with:
           github-token: ${{ env.GITHUB_TOKEN }}
           environment: Preview
-          interval: 10
-          timeout: 300
+          intervalSeconds: 10
+          timeoutSeconds: 300
       - run: |
           curl -X POST --data-urlencode "payload={\"username\": \"Github (${{ github.repository }})\", \"text\": \":tada: The deployment succeeded on ${{ github.ref_name }}. This deployment was triggered by ${{ github.triggering_actor }}.\n\nVercel Preview Link: ${{ steps.deployment.outputs.url }} \", \"icon_emoji\": \":github-actions:\"}" "${{ env.SLACK_WEBHOOK_URL }}"
 
